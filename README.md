@@ -21,7 +21,7 @@ The interface is available in **Portuguese (Brazil)** and **UK English**. All En
 - Netflix English Mode with cinematic dialogue choices and naturalness feedback.
 - Thinking in English Mode for fast, non-translation responses.
 - PWA support, offline cache, install prompt compatibility and “new version available” notification.
-- Static deployment target for GitHub Pages, with GitHub Actions included.
+- Static deployment target for GitHub Pages using a built `gh-pages` branch.
 
 ## Screens
 
@@ -119,7 +119,6 @@ The dataset is fully static and can be expanded without a backend.
 - localStorage
 - Service Worker
 - PWA manifest
-- GitHub Actions
 - GitHub Pages
 
 ## Project Structure
@@ -170,19 +169,33 @@ The test suite covers:
 - recorded audio pack resolution;
 - phonetic feedback;
 - mobile layout safeguards;
+- profile portability and import/export logic;
 - service worker update flow.
 
 ## GitHub Pages Deployment
 
-The deployment workflow is available at [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+This repository is currently published through GitHub Pages using the built `gh-pages` branch. This avoids a required backend and does not depend on a custom GitHub Actions workflow.
 
-1. Push the repository to GitHub.
-2. Go to **Settings > Pages**.
-3. Select **GitHub Actions** as the source.
-4. Push to `main`.
-5. The workflow installs dependencies, builds the app and publishes `dist/`.
+Live site:
+
+[https://degsterin.github.io/immersive-learning-english/](https://degsterin.github.io/immersive-learning-english/)
+
+Repository settings:
+
+1. Go to **Settings > Pages**.
+2. Select **Deploy from a branch** as the source.
+3. Select branch `gh-pages`.
+4. Select folder `/`.
+
+Deployment flow:
+
+1. Run the quality checks locally.
+2. Run `npm run build`.
+3. Publish the generated `dist/` output to the `gh-pages` branch.
 
 The Vite config uses `base: './'`, so the app works correctly in GitHub Pages subpaths.
+
+If GitHub Actions is enabled for the account in the future, a workflow can be added again to build `dist/` automatically from `main`.
 
 ## Privacy
 
