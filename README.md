@@ -1,5 +1,8 @@
 # Immersive Learning English
 
+[![Quality](https://github.com/DegsTerin/immersive-learning-english/actions/workflows/quality.yml/badge.svg)](https://github.com/DegsTerin/immersive-learning-english/actions/workflows/quality.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 Immersive Learning English is a static, installable web app for practising English through real situations rather than grammar drills. It separates **British English** and **American English** into independent study paths, with different vocabulary, accent training, cultural notes, idioms and interactive scenes.
 
 The interface is available in **Portuguese (Brazil)** and **UK English**. All English interface copy uses British spelling, such as **colour**, **favourite**, **organise**, **centre** and **travelling**. American spelling is used only inside the American English study path.
@@ -174,7 +177,7 @@ The test suite covers:
 
 ## GitHub Pages Deployment
 
-This repository is currently published through GitHub Pages using the built `gh-pages` branch. This avoids a required backend and does not depend on a custom GitHub Actions workflow.
+This repository is published through GitHub Pages using the built `gh-pages` branch. The `Quality` workflow validates linting, tests and production builds on pull requests and changes to `main`; publishing remains an explicit `gh-pages` branch operation.
 
 Live site:
 
@@ -195,7 +198,7 @@ Deployment flow:
 
 The Vite config uses `base: './'`, so the app works correctly in GitHub Pages subpaths.
 
-If GitHub Actions is enabled for the account in the future, a workflow can be added again to build `dist/` automatically from `main`.
+The quality workflow intentionally does not deploy, so a successful check cannot overwrite the published site.
 
 ## Privacy
 
